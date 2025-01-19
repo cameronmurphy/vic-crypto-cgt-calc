@@ -46,9 +46,9 @@ def calculate_cgt(income, taxable_component):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--income', type=float, required=True)
+    parser.add_argument('--buy-price', type=float, required=True)
     parser.add_argument('--sell-price', type=float, required=True)
     parser.add_argument('--quantity', type=float, required=True)
-    parser.add_argument('--original-investment', type=float, required=True)
     parser.add_argument('--trade-fee-percent', type=float, required=True)
     parser.add_argument('--cgt-discount', action='store_true')
     args = parser.parse_args()
@@ -56,7 +56,7 @@ def main():
     income = float(args.income)
     sell_price = float(args.sell_price)
     quantity = float(args.quantity)
-    original_investment = float(args.original_investment)
+    original_investment = float(args.buy_price) * quantity
     trade_fee_percent = float(args.trade_fee_percent)
 
     cash_from_sale_before_fees = sell_price * quantity
